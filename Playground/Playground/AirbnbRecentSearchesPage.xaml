@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.AirbnbRecentSearchesPage"
+             x:Name="Page"
+             Title="Airbnb Recent Searches">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Search..." Text="{Binding SearchTerm}" />
+            <Label Text="Recent Searches" />
+            <ListView ItemsSource="{Binding Searches}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsRefreshing="{Binding IsBusy}"
+                      CachingStrategy="RecycleElement"
+                      ItemSelected="ListView_OnItemSelected"
+                      x:Name="ListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Place}" Detail="{Binding Dates}">
+                            <TextCell.ContextActions>
+                                <MenuItem Text="Delete" IsDestructive="True" Command="{Binding Source={x:Reference  Page}, Path=BindingContext.DeleteSearchCommand}" CommandParameter="{Binding Id}" />
+                            </TextCell.ContextActions>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

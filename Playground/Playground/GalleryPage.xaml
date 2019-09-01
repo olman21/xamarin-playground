@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.GalleryPage"
+             BackgroundColor="#000">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1,0.33" AbsoluteLayout.LayoutFlags="All" Orientation="Horizontal">
+                <Button HorizontalOptions="StartAndExpand" VerticalOptions="Start" Clicked="BtnBack_OnClicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="Android" Value="left" />
+                            <On Platform="iOS" Value="left.png" />
+                        </OnPlatform>
+                    </Button.Image>
+                    <Button.BackgroundColor>
+                      <OnPlatform x:TypeArguments="Color">
+                          <On Platform="Android" Value="Transparent" />
+                        </OnPlatform>
+                    </Button.BackgroundColor>
+                </Button>
+                <ActivityIndicator IsRunning="{Binding Source={x:Reference image}, Path='IsLoading'}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <Button HorizontalOptions="EndAndExpand" VerticalOptions="Start" Clicked="BtnForward_OnClicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="Android" Value="right" />
+                            <On Platform="iOS" Value="right.png" />
+                        </OnPlatform>
+                    </Button.Image>
+                    <Button.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="Transparent"  />
+                        </OnPlatform>
+                    </Button.BackgroundColor>
+                </Button>
+            </StackLayout>
+
+            <Image x:Name="image" AbsoluteLayout.LayoutBounds="0, 0.5, 1, 0.3" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

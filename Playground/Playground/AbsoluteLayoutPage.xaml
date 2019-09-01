@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Playground"
+             x:Class="Playground.AbsoluteLayoutPage"
+             Title="Absolute Layouts">
+   <ContentPage Title="Playground">
+       <AbsoluteLayout>
+           <BoxView Color="Aqua" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" />
+           <BoxView Color="White" AbsoluteLayout.LayoutBounds="0.5, 0.1, 100, 100" AbsoluteLayout.LayoutFlags="PositionProportional" />
+           <Button Text="Get Started" BackgroundColor="Silver" AbsoluteLayout.LayoutBounds="0,1,1,50" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"></Button>
+       </AbsoluteLayout>
+    </ContentPage>
+
+    <local:PaymentPage Title="Challenge" />
+    
+</TabbedPage> 

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.InstagramPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="nyc_photographer" Margin="5, 10, 5, 10" />
+            <Image Source="http://lorempixel.com/1920/1080/nature/3/" />
+            <StackLayout Orientation="Horizontal"
+                         Padding="10">
+                <Button Text="Like" BackgroundColor="Transparent" Padding="5"  TextColor="#1dabf0"></Button>
+                <Button Text="Comment"  BackgroundColor="Transparent" Padding="5" TextColor="#1dabf0"></Button>
+                <Button Text="Share"  BackgroundColor="Transparent" Padding="5" TextColor="#1dabf0"></Button>
+            </StackLayout>
+            <BoxView Color="#f0f0f0" HeightRequest="1"></BoxView>
+            <StackLayout Padding="10, 0, 10, 0">
+               <Label FontAttributes="Bold" FontSize="22" Text="700 likes" Margin="0, 0, 0, 6" />
+               <Label TextColor="#666" Text="This is a shot yesterday in Skanor, Sweden, when driving home, from a couple of days of work in Denmark" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

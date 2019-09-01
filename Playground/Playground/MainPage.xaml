@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.MainPage">
+
+    <StackLayout  HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="CenterAndExpand">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Button Text="Back" Clicked="BtnBack_OnClicked" IsEnabled="{Binding CanGoBack}"></Button>
+            <Button Text="Next" Clicked="BtnForward_OnClicked" IsEnabled="{Binding CanGoForward}"></Button>
+        </StackLayout>
+        <Label
+            Text="{Binding Quote}"
+            FontSize="{Binding FontSize}"/>
+
+        <Slider x:Name="slider" Value="{Binding SliderValue}"></Slider>
+    </StackLayout>
+
+</ContentPage>

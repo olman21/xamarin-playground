@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Playground"
+             x:Class="Playground.RelativeLayoutPage">
+    <ContentPage Title="Playground">
+        <RelativeLayout>
+            <BoxView Color="Aqua"
+                    x:Name="Banner"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression 
+                                                    Type=RelativeToParent,
+                                                    Property=Width,
+                                                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression 
+                                                    Type=RelativeToParent,
+                                                    Property=Height,
+                                                    Factor=0.3}"/>
+            <BoxView Color="Silver"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                                                Type=RelativeToView,
+                                                ElementName=Banner,
+                                                Property=Height,
+                                                Factor=1,
+                                                Constant=-20}"
+                    RelativeLayout.XConstraint="{ConstraintExpression
+                                                Type=RelativeToParent,
+                                                Property=Width,
+                                                Factor=0.5}" />
+        </RelativeLayout>
+    </ContentPage>
+
+    <local:RelativePaymentPage Title="Payment Page"></local:RelativePaymentPage>
+</TabbedPage>

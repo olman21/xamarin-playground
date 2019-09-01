@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Playground"
+             x:Class="Playground.StackLayoutPage"
+             Title="StackLayout Playground">
+    <TabbedPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0"/>
+    </TabbedPage.Padding>
+    <ContentPage Title="Playground">
+        <StackLayout BackgroundColor="Yellow"
+                     VerticalOptions="Center"
+                     
+                     Padding="6, 0, 6, 0">
+            <Label Text="Label 1"  BackgroundColor="Silver" />
+            <Label Text="Label 2" BackgroundColor="Silver"/>
+            <Label Text="Label 3" BackgroundColor="Silver"/>
+        </StackLayout>
+    </ContentPage>
+    
+    <local:InstagramPage Title="Instagram Page" />
+    <local:LoginPage Title="Login Page" />
+
+</TabbedPage>

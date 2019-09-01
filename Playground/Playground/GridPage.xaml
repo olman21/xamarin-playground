@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Playground"
+             x:Class="Playground.GridPage"
+             Title="Grid Playground">
+    <TabbedPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0"/>
+    </TabbedPage.Padding>
+  <ContentPage Title="Playground">
+      <Grid BackgroundColor="Yellow" RowSpacing="10" ColumnSpacing="20">
+          <Grid.RowDefinitions>
+              <RowDefinition Height="100" />
+              <RowDefinition Height="2*" />
+              <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="2*" />
+              <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Label Text="Label 1" Grid.Row="0" Grid.Column="0" BackgroundColor="Silver"></Label>
+          <Label Text="Label 2" Grid.Row="0" Grid.Column="1" BackgroundColor="Silver"></Label>
+          <Label Text="Label 3" Grid.Row="1" Grid.Column="0" BackgroundColor="Silver"></Label>
+          <Label Text="Label 4" Grid.Row="1" Grid.Column="1" BackgroundColor="Silver"></Label>
+          <Label Text="ColumnSpan" Grid.ColumnSpan="3" Grid.Row="2" BackgroundColor="Silver"></Label>
+          <Label Text="RowSpan" Grid.Column="2" Grid.RowSpan="3" BackgroundColor="Silver"></Label>
+      </Grid>
+    </ContentPage>
+    <local:GridDial Title="Grid Dial" />
+    <local:GridLoginPage Title="Grid Login Page" />
+</TabbedPage>

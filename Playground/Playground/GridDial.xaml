@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.GridDial"
+             BackgroundColor="#354242">
+    <ContentPage.Content>
+        <StackLayout Padding="25">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label x:Name="DialLabel" Grid.Row="0" FontSize="50" Grid.ColumnSpan="3" TextColor="#fff" HorizontalOptions="Center" LineBreakMode="WordWrap" />
+                <Button Text="1" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="1" Grid.Column="0" Clicked="Button_OnClicked" />
+                <Button Text="2" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="1" Grid.Column="1" Clicked="Button_OnClicked"/>
+                <Button Text="3" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="1" Grid.Column="2" Clicked="Button_OnClicked"/>
+                <Button Text="4" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="2" Grid.Column="0" Clicked="Button_OnClicked"/>
+                <Button Text="5" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="2" Grid.Column="1" Clicked="Button_OnClicked"/>
+                <Button Text="6" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="2" Grid.Column="2" Clicked="Button_OnClicked"/>
+                <Button Text="7" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="3" Grid.Column="0" Clicked="Button_OnClicked"/>
+                <Button Text="8" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="3" Grid.Column="1" Clicked="Button_OnClicked"/>
+                <Button Text="9" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Grid.Row="3" Grid.Column="2" Clicked="Button_OnClicked"/>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" Grid.Row="4" Grid.ColumnSpan="3">
+                    <Button Text="0" FontSize="30" TextColor="#25252c" BackgroundColor="#fff" BorderRadius="30" Clicked="Button_OnClicked" />
+                </StackLayout>
+                <Button Text="Dial" FontSize="30" TextColor="#25252c" BackgroundColor="#96ca2d" BorderRadius="30" Grid.Row="5" Grid.ColumnSpan="3" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
