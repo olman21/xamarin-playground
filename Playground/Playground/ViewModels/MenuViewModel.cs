@@ -56,6 +56,12 @@ namespace Playground.ViewModels
                 Id = 7,
                 Label = "Navigation",
                 Page = typeof(InstagramAppPage)
+            },
+            new Menu
+            {
+                Id = 8,
+                Label = "Table View",
+                Page = typeof(TableViewPage)
             }
         };
 
