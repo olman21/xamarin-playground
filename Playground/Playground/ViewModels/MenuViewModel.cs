@@ -48,7 +48,7 @@ namespace Playground.ViewModels
             new Menu
             {
                 Id = 6,
-                Label = "Stack Layout",
+                Label = "Relative Layout",
                 Page = typeof(RelativeLayoutPage)
             },
             new Menu
@@ -62,6 +62,12 @@ namespace Playground.ViewModels
                 Id = 8,
                 Label = "Table View",
                 Page = typeof(TableViewPage)
+            },
+            new Menu
+            {
+                Id = 9,
+                Label = "Forms",
+                Page = typeof(ContactListPage)
             }
         };
 
