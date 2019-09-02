@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Playground.TableViewPage">
+             xmlns:ex="clr-namespace:Playground.Extensions"
+             x:Class="Playground.TableViewPage"
+             x:Name="page">
     <TableView Intent="Form">
         <TableRoot>
             <TableSection Title="Basics">
                 <TextCell Text="Name" Detail="Olman Mora" />
-                <EntryCell Label="Title" Placeholder="(eg Shopping)" />
+                <EntryCell Label="Title" Placeholder="(eg Shopping)" Text="{Binding Source={x:Reference page}, Path=StartLabel}" />
                 <SwitchCell Text="Notifications" On="true" />
+                <ex:DateCell Label="Start" Value="{Binding Start}" />
+                <ex:DateCell Label="End"  Value="{Binding End}" />
             </TableSection>
         </TableRoot>
     </TableView>

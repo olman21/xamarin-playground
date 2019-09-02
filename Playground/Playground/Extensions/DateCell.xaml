@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.Extensions.DateCell"
+             x:Name="Root">
+    <ViewCell.View>
+        <StackLayout Orientation="Horizontal" Padding="13, 0">
+            <Label Text="{Binding Source={x:Reference Root}, Path=Label}" x:Name="label" VerticalOptions="Center" />
+            <DatePicker Date="{Binding Source={x:Reference Root}, Path=Value}" x:Name="datePicker" HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>
