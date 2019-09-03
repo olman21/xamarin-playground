@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Playground.ContactPages;
 using Playground.Models;
+using Playground.SQLite;
 using Playground.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +19,7 @@ namespace Playground
         public ContactListPage()
         {
             InitializeComponent();
-            BindingContext = ViewModel = new ContactViewModel();
+            BindingContext = ViewModel = new ContactViewModel(DependencyService.Get<ISQLiteDb>());
             
         }
 
@@ -26,7 +27,10 @@ namespace Playground
         {
             base.OnAppearing();
             if (!ViewModel.Contacts.Any())
+            {
+                await ViewModel.Init();
                 await ViewModel.LoadContacts();
+            }
 
             ViewModel.StopEditing();
         }

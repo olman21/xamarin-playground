@@ -5,76 +5,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Playground.SQLite;
+using SQLite;
 
 namespace Playground.Services
 {
     public class ContactService
     {
-        private List<Contact> Contacts = new List<Contact>
-        {
-            new Contact
-            {
-                Id = Guid.NewGuid(),
-                Name = "Olman",
-                LastName = "Mora",
-                Phone = "7777-7777",
-                Email = "olman@example.com"
-            },
-            new Contact
-            {
-                Id = Guid.NewGuid(),
-                Name = "Roger",
-                LastName = "Waters",
-                Email = "roger@example.com"
-            },
-            new Contact
-            {
-                Id = Guid.NewGuid(),
-                Name = "Bad",
-                LastName = "Bunny",
-                Email = "bad@example.com",
-                Blocked = true
-            }
-        };
-
+        
         private readonly IMapper _mapper;
+        private readonly ISQLiteDb _sqLiteDb;
+        private SQLiteAsyncConnection connection => _sqLiteDb?.GetConnection();
+        private AsyncTableQuery<Contact> Entities => connection.Table<Contact>();
 
-        public ContactService()
+        public ContactService(ISQLiteDb sqLiteDb)
         {
             var mapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<Contact, Contact>());
             _mapper = new Mapper(mapperConfig);
+            _sqLiteDb = sqLiteDb;
         }
 
         public Task<List<Contact>> GetContacts()
         {
-            return Task.FromResult(Contacts);
+            return Entities.ToListAsync();
         }
 
-        public Task<Contact> GetContact(Guid id)
+        public async Task InitDataBase()
         {
-            var contact = Contacts.FirstOrDefault(e => e.Id == id);
-            return Task.FromResult(contact);
+            var connection =_sqLiteDb.GetConnection();
+            await connection.CreateTableAsync<Contact>();
         }
 
-        public Task UpdateContact(Contact contact)
+        public async Task<Contact> GetContact(Guid id)
         {
-            return Task.Run((() =>
+            var contact = await Entities.FirstOrDefaultAsync(e => e.Id == id);
+            return contact;
+        }
+
+        public async Task UpdateContact(Contact contact)
+        {
+            var listContact = await Entities.FirstOrDefaultAsync(e => e.Id == contact.Id);
+            if (listContact != null)
             {
-                var listContact = Contacts.FirstOrDefault(e => e.Id == contact.Id);
-                if (listContact != null)
-                {
-                    listContact = _mapper.Map(contact, listContact);
-                }
-            }));
+                listContact = _mapper.Map(contact, listContact);
+                await connection.UpdateAsync(listContact);
+            }
         }
 
-        public Task AddContact(Contact contact)
+        public async Task AddContact(Contact contact)
         {
-            return Task.Run((() =>
-            {
-                contact.Id = Guid.NewGuid();
-                Contacts.Add(contact);
-            }));
+            contact.Id = Guid.NewGuid();
+            await connection.InsertAsync(contact);
+        }
+
+        public async Task DeleteContact(Guid id)
+        {
+            var contact = await Entities.FirstOrDefaultAsync(e => e.Id == id);
+            await connection.DeleteAsync(contact);
         }
     }
 }

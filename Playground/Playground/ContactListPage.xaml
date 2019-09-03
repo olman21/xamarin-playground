@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Playground.ContactListPage"
-             Title="Contacts">
+             Title="Contacts"
+             x:Name="Page">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Icon="plus.png" Clicked="Add_OnClicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -11,7 +12,11 @@
                   x:Name="ListView">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding FullName}" />
+                <TextCell Text="{Binding FullName}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Delete" IsDestructive="True" Command="{Binding Source={x:Reference  Page}, Path=BindingContext.DeleteContactCommand}" CommandParameter="{Binding Id}" />
+                    </TextCell.ContextActions>
+                </TextCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
